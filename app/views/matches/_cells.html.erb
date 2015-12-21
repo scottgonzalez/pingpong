@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Player 1</th>
+			<th>Player 2</th>
+			<th>Game 1</th>
+			<th>Game 2</th>
+			<th>Game 3</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% matches.each do |match| %>
+		<tr>
+			<td><%= match.created_at %></td>
+			<td><%= link_to match.player1.name, match.player1 %></td>
+			<td><%= link_to match.player2.name, match.player2 %></td>
+			<td><%= game_score(match.games[0]) %></td>
+			<td><%= game_score(match.games[1]) %></td>
+			<td><%= game_score(match.games[2]) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,20 @@
+<p><%= link_to "Add new player", new_player_path %></p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Player</th>
+			<th>Wins</th>
+			<th>Losses</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @players.each do |player| %>
+			<tr>
+				<td><%= link_to player.name, player %></td>
+				<td><%= player.wins %></td>
+				<td><%= player.losses %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
