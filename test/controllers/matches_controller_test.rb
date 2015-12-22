@@ -15,7 +15,7 @@ class MatchesControllerTest < ActionController::TestCase
 
   test "should create match" do
     assert_difference("Match.count") do
-      games =  [
+      games = [
         { player1_id: "1", player2_id: "2", player1_score: "11", player2_score: "0" },
         { player1_id: "1", player2_id: "2", player1_score: "11", player2_score: "0" }
       ]

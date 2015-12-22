@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
       errors.add(:score, "must be won by at least two points.")
 
     # Overtime must win by exactly 2
-    elsif player1_score > 10 && score_diff > 2
+    elsif player1_score > 11 && score_diff > 2
       errors.add(:score, "must be won by exactly two points in overtime.")
     end
   end
