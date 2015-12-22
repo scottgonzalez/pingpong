@@ -1,11 +1,13 @@
 <%= form_for @player do |f| %>
-	<fieldset>
-		<div>
-			<%= f.label :name %>
-			<%= f.text_field :name %>
-		</div>
-	</fieldset>
-	<div>
-		<%= f.submit %>
-	</div>
+  <%= render partial: 'shared/errors', object: @player, locals: { model: "player" } %>
+
+  <fieldset>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+  </fieldset>
+  <div>
+    <%= f.submit %>
+  </div>
 <% end %>

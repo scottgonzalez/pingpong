@@ -18,7 +18,6 @@ class PlayersController < ApplicationController
 			flash[:success] = "Player \"" + @player.name + "\" created!"
 			redirect_to players_path
 		else
-			flash[:error] = "Error creating player!"
 			render 'new'
 		end
 	end
