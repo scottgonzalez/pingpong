@@ -1,4 +1,6 @@
 <%= form_for @match do |f| %>
+  <%= render partial: 'shared/errors', object: @match, locals: { model: "match" } %>
+
   <label>Players: </label>
   <%= f.collection_select(:player1_id, Player.all, :id, :name, {:include_blank => true}) %>
   vs.

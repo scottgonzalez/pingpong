@@ -6,6 +6,10 @@ class Match < ActiveRecord::Base
   has_many :games
   accepts_nested_attributes_for :games
 
+  validates :player1_id, presence: true
+  validates :player2_id, presence: true
+  validate :validate_game_count
+
   def player1
     Player.find(self.player1_id)
   end
@@ -26,6 +30,12 @@ class Match < ActiveRecord::Base
       determine_winner
     end
     @losing_player
+  end
+
+  def validate_game_count
+    if (self.games.size < 2)
+      errors.add(:base, "Matches must contain two or three games.")
+    end
   end
 
   private

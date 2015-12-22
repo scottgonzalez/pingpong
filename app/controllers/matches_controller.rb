@@ -32,7 +32,10 @@ class MatchesController < ApplicationController
 
       redirect_to matches_path
     else
-      flash[:error] = "Error creating match!"
+      until @match.games.size == 3
+        @match.games.build
+      end
+
       render 'new'
     end
   end
