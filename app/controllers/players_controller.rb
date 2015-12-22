@@ -13,8 +13,8 @@ class PlayersController < ApplicationController
 	end
 
 	def create
-		@player = Player.create(player_params)
-		if @player
+		@player = Player.new(player_params)
+		if @player.save
 			flash[:success] = "Player \"" + @player.name + "\" created!"
 			redirect_to players_path
 		else
