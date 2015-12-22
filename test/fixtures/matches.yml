@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  player1_id: 
-  player2_id: 
+match_one:
+  id: 1
+  player1_id: 1
+  player2_id: 2
 
-two:
-  player1_id: 
-  player2_id: 
+match_two:
+  id: 2
+  player1_id: 3
+  player2_id: 4

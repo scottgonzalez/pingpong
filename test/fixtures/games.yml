@@ -1,15 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  player1_id: 
-  player2_id: 
-  match_id: 
-  player1_score: 1
-  player2_score: 1
+# Match 1 - Player one wins
 
-two:
-  player1_id: 
-  player2_id: 
-  match_id: 
-  player1_score: 1
-  player2_score: 1
+game_one:
+  id: 1
+  player1_id: 1
+  player2_id: 2
+  match_id: 1
+  player1_score: 11
+  player2_score: 0
+
+game_two:
+  id: 2
+  player1_id: 1
+  player2_id: 2
+  match_id: 1
+  player1_score: 11
+  player2_score: 0
+
+# Match 2 - Player three wins
+game_three:
+  id: 3
+  player1_id: 3
+  player2_id: 4
+  match_id: 2
+  player1_score: 11
+  player2_score: 0
+
+game_four:
+  id: 4
+  player1_id: 3
+  player2_id: 4
+  match_id: 2
+  player1_score: 11
+  player2_score: 0
