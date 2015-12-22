@@ -43,6 +43,12 @@ class MatchesController < ApplicationController
   private
 
   def match_params
-    params.require(:match).permit(:player1_id, :player2_id, games_attributes: [:player1_score, :player2_score])
+    params
+      .require(:match)
+      .permit(
+        :player1_id,
+        :player2_id,
+        games_attributes: [:player1_score, :player2_score]
+      )
   end
 end

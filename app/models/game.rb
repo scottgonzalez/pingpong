@@ -8,10 +8,19 @@ class Game < ActiveRecord::Base
   validate :validate_scores
 
   def validate_scores
+    score_diff = (player1_score - player2_score).abs
+
+    # Games must be played to 11
     if player1_score < 11 && player2_score < 11
       errors.add(:score, "must be at least 11 points.")
-    elsif (player1_score - player2_score).abs < 2
+
+    # Must win by 2
+    elsif score_diff < 2
       errors.add(:score, "must be won by at least two points.")
+
+    # Overtime must win by exactly 2
+    elsif player1_score > 10 && score_diff > 2
+      errors.add(:score, "must be won by exactly two points in overtime.")
     end
   end
 end
