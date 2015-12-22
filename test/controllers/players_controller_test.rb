@@ -4,7 +4,13 @@ class PlayersControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil :players
+    assert_not_nil assigns(:players)
+  end
+
+  test "should get new player" do
+    get :new
+    assert_response :success
+    assert_not_nil assigns(:player)
   end
 
   test "should show player" do
