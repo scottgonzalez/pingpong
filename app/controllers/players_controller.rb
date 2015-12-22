@@ -3,23 +3,41 @@ class PlayersController < ApplicationController
     @players = Player.all.order(wins: :desc)
   end
 
-  def new
-    @player = Player.new
-  end
-
   def show
     @player = Player.find(params[:id])
     @history = PlayerHistory.from_player(@player)
   end
 
+  def new
+    @player = Player.new
+  end
+
+  def edit
+    @player = Player.find(params[:id])
+  end
+
   def create
     @player = Player.new(player_params)
     if @player.save
-      flash[:success] = "Player \"" + @player.name + "\" created!"
+      flash[:success] = "Player '#{@player.name}' created!"
       redirect_to players_path
     else
       render 'new'
     end
+  end
+
+  def update
+    player = Player.find(params[:id])
+    player.update(player_params)
+    redirect_to player
+  end
+
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy
+
+    flash[:success] = "Player '#{player.name}' deleted!"
+    redirect_to players_path
   end
 
   private
