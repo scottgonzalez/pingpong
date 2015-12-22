@@ -1,17 +1,17 @@
 <%= form_for @match do |f| %>
-	<label>Players: </label>
-	<%= f.collection_select(:player1_id, Player.all, :id, :name, {:include_blank => true}) %>
-	vs.
-	<%= f.collection_select(:player2_id, Player.all, :id, :name, {:include_blank => true}) %>
+  <label>Players: </label>
+  <%= f.collection_select(:player1_id, Player.all, :id, :name, {:include_blank => true}) %>
+  vs.
+  <%= f.collection_select(:player2_id, Player.all, :id, :name, {:include_blank => true}) %>
 
-	<% @match.games.each_with_index do |game, index| %>
-		<%= f.fields_for :games, game do |game_field| %>
-			<div>
-				<%= game_field.label :player1_score, "Game #{index + 1} Score" %>
-				<%= game_field.text_field :player1_score %>
-				<%= game_field.text_field :player2_score %>
-			</div>
-		<% end %>
-	<% end %>
-	<%= f.submit %>
+  <% @match.games.each_with_index do |game, index| %>
+    <%= f.fields_for :games, game do |game_field| %>
+      <div>
+        <%= game_field.label :player1_score, "Game #{index + 1} Score" %>
+        <%= game_field.text_field :player1_score %>
+        <%= game_field.text_field :player2_score %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
 <% end %>
