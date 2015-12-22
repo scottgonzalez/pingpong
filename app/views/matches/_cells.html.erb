@@ -1,4 +1,4 @@
-<table>
+<table class="listing">
   <thead>
     <tr>
       <th>Date</th>
@@ -13,14 +13,18 @@
     <% matches.each do |match| %>
       <tr>
         <td><%= match.created_at.strftime("%m-%d-%Y") %></td>
-        <td><%= link_to match.player1.name, match.player1 %></td>
-        <td><%= link_to match.player2.name, match.player2 %></td>
+        <td <%= if match.winner == match.player1 then 'class="winner"'.html_safe end %>>
+          <%= link_to match.player1.name, match.player1 %>
+        </td>
+        <td <%= if match.winner == match.player2 then 'class="winner"'.html_safe end %>>
+          <%= link_to match.player2.name, match.player2 %>
+        </td>
         <td><%= game_score(match.games[0]) %></td>
         <td><%= game_score(match.games[1]) %></td>
         <% if match.games[2] %>
           <td><%= game_score(match.games[2]) %></td>
         <% else %>
-          <td>N/A</td>
+          <td class="empty">N/A</td>
         <% end %>
       </tr>
     <% end %>
