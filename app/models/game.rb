@@ -8,6 +8,10 @@ class Game < ActiveRecord::Base
   validate :validate_scores
 
   def validate_scores
+    if errors[:player1_score].any? || errors[:player2_score].any?
+      return
+    end
+
     score_diff = (player1_score - player2_score).abs
 
     # Games must be played to 11
