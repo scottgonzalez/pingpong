@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
 	def index
-		@matches = Match.all
+		@matches = Match.all.order(created_at: :desc)
 	end
 
 	def new
