@@ -1,5 +1,7 @@
 <h1><%= @player.name %></h1>
 
-<h3>Record: <%= @player.wins %> wins and <%= @player.losses %> losses</h3>
+<h3>Record: <%= pluralize(@player.wins, "win") %> and <%= pluralize(@player.losses, "loss") %></h3>
+
+<p><%= link_to "Add a new match", new_match_path(player: @player.id) %></p>
 
 <%= render partial: 'matches/cells', object: @history, as: :matches %>

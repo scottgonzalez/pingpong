@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
+    @player_id = params[:player]
     3.times { @match.games.build }
   end
 
