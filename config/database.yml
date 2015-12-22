@@ -9,8 +9,8 @@ default: &default
   pool: 5
   encoding: utf8
   timeout: 5000
-  username: root
-  password: root
+  username: pingpong
+  password: pingpong
   host: localhost
 
 development:
