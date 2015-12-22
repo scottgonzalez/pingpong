@@ -20,10 +20,21 @@ class PlayersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:history)
   end
 
-  test "should create player" do
+  test "should get error creating player with no name" do
+    player = Player.new
+    player.save
+
+    # Player's name is nil - should fail
+    assert(player.errors[:name].any?)
+  end
+
+  test "should create valid player" do
     assert_difference("Player.count") do
+
+      # This player has a name - it's valid
       post :create, player: {name: "New Player"}
     end
     assert_redirected_to players_path
   end
+
 end
