@@ -1,3 +1,5 @@
 <h1><%= @player.name %></h1>
 
+<h3>Record: <%= @player.wins %> wins and <%= @player.losses %> losses</h3>
+
 <%= render partial: 'matches/cells', object: @history, as: :matches %>
