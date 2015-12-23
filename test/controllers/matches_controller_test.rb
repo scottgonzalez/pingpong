@@ -23,4 +23,13 @@ class MatchesControllerTest < ActionController::TestCase
     end
     assert_redirected_to matches_path
   end
+
+  test "should update match" do
+    games = [
+      { player1_id: "1", player2_id: "2", player1_score: "11", player2_score: "0" },
+      { player1_id: "1", player2_id: "2", player1_score: "11", player2_score: "0" }
+    ]
+    put :update, id: "1", match: { player1_id: "1", player2_id: "2", games_attributes: games }
+    assert_redirected_to matches_path
+  end
 end
