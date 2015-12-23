@@ -98,25 +98,25 @@ class MatchesController < ApplicationController
       game.player1_id = @match.player1_id
       game.player2_id = @match.player2_id
     end
+  end
 
-    def update_stats
-      @match.winner.wins += 1
-      @match.winner.save
+  def update_stats
+    @match.winner.wins += 1
+    @match.winner.save
 
-      @match.loser.losses += 1
-      @match.loser.save
-    end
+    @match.loser.losses += 1
+    @match.loser.save
+  end
 
-    def update_stats_new_winner
-      update_stats
+  def update_stats_new_winner
+    update_stats
 
-      # The previous winner is now the loser
-      @previous_winner.losses += 1
-      @previous_winner.wins -= 1
+    # The previous winner is now the loser
+    @previous_winner.losses += 1
+    @previous_winner.wins -= 1
 
-      # The previous loser is now the winner
-      @previous_loser.losses -= 1
-      @previous_loser.wins += 1
-    end
+    # The previous loser is now the winner
+    @previous_loser.losses -= 1
+    @previous_loser.wins += 1
   end
 end
