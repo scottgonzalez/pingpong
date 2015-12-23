@@ -7,6 +7,7 @@
       <th>Game 1</th>
       <th>Game 2</th>
       <th>Game 3</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,12 @@
         <% else %>
           <td class="empty">N/A</td>
         <% end %>
+        <td>
+          <%= link_to "Edit", edit_match_path(match) %>
+          <%= link_to "Delete", match_path(match),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

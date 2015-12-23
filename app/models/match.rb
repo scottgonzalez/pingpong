@@ -9,6 +9,7 @@ class Match < ActiveRecord::Base
   validates :player1_id, presence: true
   validates :player2_id, presence: true
   validate :validate_game_count
+  validate :validate_winner
 
   def player1
     Player.find(self.player1_id)
@@ -38,12 +39,25 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def validate_winner
+    if !has_winner
+      errors.add(:base, "Match does not have a winner. A player must win 2 out of 3 games.")
+    end
+  end
+
   private
 
   def determine_winner
-    player1_is_winner = self.games.select { |game|
-      game.player1_score > game.player2_score
-    }.count == 2
+    get_games_won
+
+    if @player1_games_won == @player2_games_won
+      @winning_player = nil
+      @losing_player = nil
+    end
+
+    if @player1_games_won > @player2_games_won
+      player1_is_winner = true
+    end
 
     if player1_is_winner
       @winning_player = player1
@@ -54,4 +68,21 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def get_games_won
+    @player1_games_won = 0
+    @player2_games_won = 0
+
+    self.games.select do |game|
+      if game.player1_score > game.player2_score
+        @player1_games_won += 1
+      else
+        @player2_games_won += 1
+      end
+    end
+  end
+
+  def has_winner
+    get_games_won
+    @player1_games_won != @player2_games_won
+  end
 end
