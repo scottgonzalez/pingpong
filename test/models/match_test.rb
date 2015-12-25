@@ -34,9 +34,9 @@ class MatchTest < ActiveSupport::TestCase
 
   test "should have winner and loser" do
 
-    #Player One wins 2-0 in our setup method
+    # Player One wins 2-0 in our setup method
     assert(@match.errors.none?, "There should be errors")
-    assert(@match.winner, "Match should have a winner")
-    assert(@match.loser, "Match should have a loser")
+    assert_equal(@match.winner.id, 1, "Match's winner should be player one'")
+    assert_equal(@match.loser.id, 2, "Match's loser should be player two")
   end
 end
