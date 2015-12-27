@@ -13,6 +13,14 @@ class MatchTest < ActiveSupport::TestCase
     @match = nil
   end
 
+  test "should have player one" do
+    assert(@match.player1.id = 1)
+  end
+
+  test "should have player two" do
+    assert(@match.player2.id = 2)
+  end
+
   test "should have no winner" do
     @match.games.first.player1_score = 0
     @match.games.first.player2_score = 11
